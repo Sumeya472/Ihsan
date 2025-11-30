@@ -1,87 +1,80 @@
-Ihsan - Islamic Countdown App 🕌
+# Ihsan - Islamic Countdown App 🕌
+
 A beautiful and spiritual app to help Muslims track important Islamic events and daily worship with ease.
 
-✨ What is Ihsan?
+## ✨ What is Ihsan?
+
 Ihsan is your personal Islamic companion that helps you stay connected to your faith through:
 
-🕰️ Smart Countdowns - Track Ramadan, Eid, Hajj, and personal events
-📿 Digital Tasbih - Count your dhikr with beautiful buttons
-📖 Quran Tracker - Build your daily reading streak
-🕋 Prayer Tools - Find Qibla direction and prayer times
-📅 Islamic Calendar - Never miss important dates
-💰 Zakat Calculator - Calculate your charity easily
+🕰️ **Smart Countdowns** - Track Ramadan, Eid, Hajj, and personal events
+📿 **Digital Tasbih** - Count your dhikr with beautiful buttons
+📖 **Quran Tracker** - Build your daily reading streak
+🕋 **Prayer Tools** - Find Qibla direction and prayer times
+📅 **Islamic Calendar** - Never miss important dates
+💰 **Zakat Calculator** - Calculate your charity easily
 
-🚀 Get Started in Seconds!
-Download the HTML file
+## 🚀 Get Started in Seconds!
 
-Open it in any web browser
+1. **Download** the HTML file
+2. **Open** it in any web browser (Chrome, Firefox, Safari, etc.)
+3. **Start using** immediately - no installation needed!
 
-Start using immediately - no installation needed!
+## 🎯 How to Use
 
-🎯 How to Use
-Creating Countdowns
-Click "Add New Countdown"
+### Creating Countdowns is Easy!
+- Click "Add New Countdown" 
+- Name your event (like "Eid Celebration")
+- Pick the date
+- Choose a category
+- Done! 🎉
 
-Name your event
+### Spiritual Tools at Your Fingertips
+- **Tasbih Counter**: Tap to count SubhanAllah, Alhamdulillah, etc.
+- **Quran Streak**: Click daily to build your habit
+- **Prayer Times**: See when to pray next
+- **Daily Dua**: Get inspired with beautiful supplications
 
-Pick the date
+## 🌙 Why Choose Ihsan?
 
-Choose a category
+✅ **Beautiful Design** - Calming Islamic-themed interface
+✅ **Works Everywhere** - Phone, tablet, computer
+✅ **Private & Secure** - Your data stays on your device
+✅ **Completely Free** - No costs, no ads
+✅ **Easy to Use** - No technical skills needed
 
-Done! 🎉
+## 💡 Perfect For...
 
-Spiritual Tools
-Tasbih Counter: Tap to count dhikr
+- 🕌 Ramadan preparation and tracking
+- 📅 Islamic event reminders
+- 🎯 Building daily worship habits
+- 🕋 Finding prayer direction when traveling
+- 💰 Calculating Zakat during Ramadan
 
-Quran Streak: Click daily to build habit
+## 🎨 Make It Yours
 
-Prayer Times: See when to pray next
+Choose from beautiful themes:
+- 🌿 Islamic Green
+- 🌙 Islamic Dark  
+- ⭐ Islamic Gold
+- 🌅 Sunset
+- 🌊 Ocean
 
-Daily Dua: Beautiful supplications
+## 🤝 Want to Help?
 
-🌙 Why Choose Ihsan?
-✅ Beautiful Design - Islamic-themed interface
-✅ Works Everywhere - Phone, tablet, computer
-✅ Private & Secure - Your data stays on device
-✅ Completely Free - No costs, no ads
-✅ Easy to Use - No technical skills needed
+We welcome contributions! You can:
+- Report bugs 🐛
+- Suggest new features 💡
+- Help translate 🌍
+- Share with friends 📤
 
-💡 Perfect For...
-Ramadan preparation
+## 📞 Need Help?
 
-Islamic event reminders
+Just open the app and click the "Help" button - everything is explained inside!
 
-Daily worship habits
+Made with ❤️ for the Muslim Ummah**
 
-Prayer direction
+*May this app bring you closer to Allah and help in your spiritual journey.* can you minimize the animations and
 
-Zakat calculation
+**Made with ❤️ for the Muslim Ummah**
 
-🎨 Make It Yours
-Choose from themes:
-
-Islamic Green
-
-Islamic Dark
-
-Islamic Gold
-
-Sunset
-
-Ocean
-
-🤝 Want to Help?
-Report bugs
-
-Suggest features
-
-Help translate
-
-Share with friends
-
-Made with ❤️ for the Muslim Ummah
-
-May this app bring you closer to Allah and help in your spiritual journey.
-Made with ❤️ for the Muslim Ummah
-
-May this app bring you closer to Allah and help in your spiritual journey.
+*May this app bring you closer to Allah and help in your spiritual journey.* can you minimize the animations and
