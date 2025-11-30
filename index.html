@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ihsan - Islamic Countdown Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="theme-islamic-dark" dir="ltr">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-mosque"></i>
+          </div>
+          <div class="logo-text" id="logo-text">Ihsan</div>
+        </div>
+        <div class="nav-links">
+          <a href="#home" class="nav-link active" data-section="home">Home</a>
+          <a href="#countdowns" class="nav-link" data-section="countdowns"
+            >Countdowns</a
+          >
+          <a href="#prayer-times" class="nav-link" data-section="prayer-times"
+            >Prayer Times</a
+          >
+          <a
+            href="#islamic-features"
+            class="nav-link"
+            data-section="islamic-features"
+            >Islamic Features</a
+          >
+        </div>
+        <div class="nav-actions">
+          <button class="nav-btn" id="theme-btn">
+            <i class="fas fa-palette"></i> <span id="theme-text">Themes</span>
+          </button>
+          <button class="nav-btn" id="help-btn">
+            <i class="fas fa-question-circle"></i>
+            <span id="help-text">Help</span>
+          </button>
+          <button class="nav-btn" id="settings-btn">
+            <i class="fas fa-cog"></i> <span id="settings-text">Settings</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <section id="home" class="section active homepage">
+      <div class="home-content">
+        <h1 class="home-title">Ihsan Islamic Countdown App</h1>
+        <p class="home-subtitle">
+          Your spiritual companion for tracking Islamic events and daily
+          practices
+        </p>
+        <button class="get-started-btn" id="get-started-btn">
+          <i class="fas fa-play-circle"></i>
+          <span>Get Started</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="countdowns" class="section">
+      <div class="container">
+        <div class="app-grid">
+          <div class="card active-countdown">
+            <h2 class="section-title">
+              <i class="fas fa-star"></i>
+              <span id="active-countdown-title">Active Countdown</span>
+            </h2>
+            <div class="active-title" id="active-title">Select a countdown</div>
+
+            <div class="countdown-display" id="countdown-display">
+              <div class="time-unit">
+                <div class="time-value" id="days">--</div>
+                <div class="time-label" id="days-label">Days</div>
+              </div>
+              <div class="time-unit">
+                <div class="time-value" id="hours">--</div>
+                <div class="time-label" id="hours-label">Hours</div>
+              </div>
+              <div class="time-unit">
+                <div class="time-value" id="minutes">--</div>
+                <div class="time-label" id="minutes-label">Minutes</div>
+              </div>
+              <div class="time-unit">
+                <div class="time-value" id="seconds">--</div>
+                <div class="time-label" id="seconds-label">Seconds</div>
+              </div>
+            </div>
+
+            <div class="expired" id="expired-message">EXPIRED!</div>
+
+            <div class="progress-container">
+              <div
+                class="progress-bar"
+                id="progress-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+            <div class="progress-text" id="progress-text">
+              0% of time passed
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="section-title">
+              <i class="fas fa-plus-circle"></i>
+              <span id="add-countdown-title">Add New Countdown</span>
+            </h2>
+            <form id="countdown-form">
+              <div class="form-group">
+                <label for="title"
+                  ><i class="fas fa-heading"></i>
+                  <span id="event-title-label">Event Title</span></label
+                >
+                <input
+                  type="text"
+                  id="title"
+                  placeholder="What are you counting down to?"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="date"
+                  ><i class="fas fa-calendar-alt"></i>
+                  <span id="event-date-label">Event Date</span></label
+                >
+                <input type="date" id="date" required />
+              </div>
+              <div class="form-group">
+                <label for="category"
+                  ><i class="fas fa-tag"></i>
+                  <span id="category-label">Category</span></label
+                >
+                <select id="category">
+                  <option value="personal">Personal</option>
+                  <option value="work">Work</option>
+                  <option value="holiday">Holiday</option>
+                  <option value="education">Education</option>
+                  <option value="islamic">Islamic</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <button type="submit">
+                <i class="fas fa-plus"></i>
+                <span id="add-countdown-btn">Add Countdown</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h2 class="section-title">
+              <i class="fas fa-list"></i>
+              <span id="my-countdowns-title">My Countdowns</span>
+            </h2>
+            <div class="countdown-list" id="countdown-list"></div>
+          </div>
+
+          <div class="card">
+            <h2 class="section-title">
+              <i class="fas fa-chart-pie"></i>
+              <span id="statistics-title">Statistics</span>
+            </h2>
+            <div class="stats-container">
+              <div class="stat-box">
+                <div class="stat-value" id="total-count">0</div>
+                <div class="stat-label" id="total-label">Total</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="active-count">0</div>
+                <div class="stat-label" id="active-label">Active</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="completed-count">0</div>
+                <div class="stat-label" id="completed-label">Completed</div>
+              </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 30px">
+              <i class="fas fa-bolt"></i>
+              <span id="quick-actions-title">Quick Actions</span>
+            </h2>
+            <div style="margin-top: 20px">
+              <button
+                class="nav-btn"
+                id="reminder-btn"
+                style="width: 100%; margin-bottom: 15px"
+              >
+                <i class="fas fa-bell"></i>
+                <span id="set-reminder-btn">Set Reminder</span>
+              </button>
+              <button class="nav-btn" id="share-btn" style="width: 100%">
+                <i class="fas fa-share-alt"></i>
+                <span id="share-countdown-btn">Share Countdown</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prayer-times" class="section">
+      <div class="container">
+        <div class="prayer-times-section">
+          <h2 class="features-title" id="prayer-times-title">
+            Prayer Times (Addis Ababa)
+          </h2>
+          <div class="prayer-times-grid" id="prayer-times-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="islamic-features" class="section">
+      <div class="container">
+        <div class="islamic-features-section">
+          <h2 class="features-title" id="islamic-features-title">
+            Islamic Features
+          </h2>
+          <div class="islamic-features-grid">
+            <div class="card tasbih-counter">
+              <h2 class="section-title">
+                <i class="fas fa-pray"></i>
+                <span id="tasbih-counter-title">Tasbih Counter</span>
+              </h2>
+              <div class="tasbih-display" id="tasbih-count">0</div>
+              <div class="tasbih-buttons">
+                <button class="tasbih-btn" id="subhanallah-btn">
+                  <i class="fas fa-plus"></i> <span>SubhanAllah</span>
+                </button>
+                <button class="tasbih-btn" id="alhamdulillah-btn">
+                  <i class="fas fa-plus"></i> <span>Alhamdulillah</span>
+                </button>
+                <button class="tasbih-btn" id="allahuakbar-btn">
+                  <i class="fas fa-plus"></i> <span>Allahu Akbar</span>
+                </button>
+                <button class="tasbih-btn" id="astaghfirullah-btn">
+                  <i class="fas fa-plus"></i> <span>Astaghfirullah</span>
+                </button>
+              </div>
+              <button class="tasbih-btn reset-btn" id="reset-tasbih">
+                <i class="fas fa-redo"></i>
+                <span id="reset-counter-btn">Reset Counter</span>
+              </button>
+            </div>
+
+            <div class="card quran-streak">
+              <h2 class="section-title">
+                <i class="fas fa-book-quran"></i>
+                <span id="quran-streak-title">Qur'an Streak</span>
+              </h2>
+              <div class="streak-display" id="streak-count">0</div>
+              <div class="streak-info" id="streak-info">
+                Start your Qur'an reading streak today!
+              </div>
+              <button class="streak-btn" id="log-reading">
+                <i class="fas fa-check"></i>
+                <span id="log-reading-btn">I Read Qur'an Today</span>
+              </button>
+            </div>
+
+            <div class="card islamic-calendar">
+              <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="islamic-calendar-title">Islamic Calendar</span>
+              </h2>
+              <div class="hijri-date" id="hijri-date">14 Ramadan 1445</div>
+              <div class="gregorian-date" id="gregorian-date">
+                Tuesday, March 25, 2025
+              </div>
+              <div class="islamic-month" id="islamic-month">
+                Ramadan - Month of Fasting
+              </div>
+              <div class="special-days" id="special-days">
+                <p>Fasting Day 14 of 30</p>
+              </div>
+            </div>
+
+            <div class="card qibla-finder">
+              <h2 class="section-title">
+                <i class="fas fa-compass"></i>
+                <span id="qibla-finder-title">Qibla Finder</span>
+              </h2>
+              <div class="compass-container">
+                <div class="compass" id="compass">
+                  <div class="compass-needle" id="compass-needle"></div>
+                  <div class="compass-direction north">N</div>
+                  <div class="compass-direction south">S</div>
+                  <div class="compass-direction east">E</div>
+                  <div class="compass-direction west">W</div>
+                </div>
+              </div>
+              <div class="qibla-angle" id="qibla-angle">
+                Qibla Direction: 123°
+              </div>
+              <button class="tasbih-btn" id="calibrate-qibla">
+                <i class="fas fa-sync-alt"></i>
+                <span id="calibrate-qibla-btn">Calibrate Qibla</span>
+              </button>
+            </div>
+
+            <div class="card daily-dua">
+              <h2 class="section-title">
+                <i class="fas fa-hands-praying"></i>
+                <span id="daily-dua-title">Daily Dua</span>
+              </h2>
+              <div class="dua-text">
+                <div class="dua-arabic" id="dua-arabic">
+                  رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ
+                  حَسَنَةً وَقِنَا عَذَابَ النَّارِ
+                </div>
+                <div class="dua-translation" id="dua-translation">
+                  Our Lord, give us in this world [that which is] good and in
+                  the Hereafter [that which is] good and protect us from the
+                  punishment of the Fire.
+                </div>
+                <div class="dua-reference" id="dua-reference">Quran 2:201</div>
+              </div>
+              <div class="dua-buttons">
+                <button class="tasbih-btn" id="prev-dua">
+                  <i class="fas fa-arrow-left"></i>
+                  <span>Previous</span>
+                </button>
+                <button class="tasbih-btn" id="next-dua">
+                  <span>Next</span>
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card zakat-calculator">
+              <h2 class="section-title">
+                <i class="fas fa-calculator"></i>
+                <span id="zakat-calculator-title">Zakat Calculator</span>
+              </h2>
+              <form class="zakat-form" id="zakat-form">
+                <div class="form-group">
+                  <label for="cash-assets">Cash & Bank Assets ($)</label>
+                  <input
+                    type="number"
+                    id="cash-assets"
+                    placeholder="Enter amount"
+                    min="0"
+                    step="0.01"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="gold-value">Gold Value ($)</label>
+                  <input
+                    type="number"
+                    id="gold-value"
+                    placeholder="Enter value"
+                    min="0"
+                    step="0.01"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="silver-value">Silver Value ($)</label>
+                  <input
+                    type="number"
+                    id="silver-value"
+                    placeholder="Enter value"
+                    min="0"
+                    step="0.01"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="business-assets">Business Assets ($)</label>
+                  <input
+                    type="number"
+                    id="business-assets"
+                    placeholder="Enter value"
+                    min="0"
+                    step="0.01"
+                  />
+                </div>
+                <button type="submit" class="tasbih-btn">
+                  <i class="fas fa-calculator"></i>
+                  <span id="calculate-zakat-btn">Calculate Zakat</span>
+                </button>
+              </form>
+              <div class="zakat-result" id="zakat-result">
+                <h3>Your Zakat Obligation</h3>
+                <div class="zakat-amount" id="zakat-amount">$0.00</div>
+                <p>Based on 2.5% of your eligible assets</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p id="footer-text">
+          © 2025 Ihsan Islamic Countdown App | Track your most important moments
+          with precision and spirituality.
+        </p>
+      </div>
+    </footer>
+
+    <div class="modal" id="theme-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-palette"></i>
+            <span id="choose-theme-title">Choose Theme</span>
+          </h3>
+          <button class="close-btn" id="close-theme-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="theme-description">
+            Select a theme to change the appearance of your countdown manager:
+          </p>
+          <div class="theme-options">
+            <div
+              class="theme-option"
+              data-theme="default"
+              style="
+                background: linear-gradient(135deg, #1a2a6c, #2d0b59, #1a2a6c);
+              "
+            >
+              Default Theme
+            </div>
+            <div
+              class="theme-option"
+              data-theme="space"
+              style="
+                background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+              "
+            >
+              Space Theme
+            </div>
+            <div
+              class="theme-option"
+              data-theme="sunset"
+              style="
+                background: linear-gradient(135deg, #ff7e5f, #feb47b, #ff7e5f);
+              "
+            >
+              Sunset Theme
+            </div>
+            <div
+              class="theme-option"
+              data-theme="ocean"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  #1d2b64,
+                  #1d2b64,
+                  #1d2b64,
+                  #f8cdda
+                );
+              "
+            >
+              Ocean Theme
+            </div>
+            <div
+              class="theme-option active"
+              data-theme="islamic"
+              style="
+                background: linear-gradient(135deg, #0a5c36, #0a7e3c, #0a5c36);
+              "
+            >
+              Islamic Theme
+            </div>
+            <div
+              class="theme-option"
+              data-theme="islamic-dark"
+              style="
+                background: linear-gradient(135deg, #0a192f, #0a2e36, #0a192f);
+              "
+            >
+              Islamic Dark
+            </div>
+            <div
+              class="theme-option"
+              data-theme="islamic-gold"
+              style="
+                background: linear-gradient(135deg, #1a1a2e, #16213e, #1a1a2e);
+              "
+            >
+              Islamic Gold
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="help-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-question-circle"></i>
+            <span id="help-center-title">Help Center</span>
+          </h3>
+          <button class="close-btn" id="close-help-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body help-content">
+          <h3>
+            <i class="fas fa-star"></i>
+            <span id="getting-started-title">Getting Started</span>
+          </h3>
+          <p id="getting-started-desc">
+            Welcome to Ihsan - Islamic Countdown Manager! This app helps you
+            track important events with beautiful countdown timers and Islamic
+            features.
+          </p>
+
+          <h3>
+            <i class="fas fa-plus-circle"></i>
+            <span id="creating-countdowns-title">Creating Countdowns</span>
+          </h3>
+          <ol id="creating-countdowns-list">
+            <li>Go to the "Add New Countdown" section</li>
+            <li>Enter a title for your event</li>
+            <li>Select the event date using the date picker</li>
+            <li>Choose a category to organize your countdown</li>
+            <li>Click "Add Countdown" to save it</li>
+          </ol>
+
+          <h3>
+            <i class="fas fa-list"></i>
+            <span id="managing-countdowns-title">Managing Countdowns</span>
+          </h3>
+          <ul id="managing-countdowns-list">
+            <li>
+              <strong>Set Active:</strong> Click any countdown to display it in
+              the main view
+            </li>
+            <li>
+              <strong>Edit:</strong> Click the pencil icon to modify a countdown
+            </li>
+            <li>
+              <strong>Delete:</strong> Click the trash icon to remove a
+              countdown
+            </li>
+            <li>
+              <strong>Newest First:</strong> New countdowns appear at the top of
+              your list
+            </li>
+          </ul>
+
+          <h3>
+            <i class="fas fa-clock"></i>
+            <span id="prayer-times-help-title">Prayer Times</span>
+          </h3>
+          <ul id="prayer-times-help-list">
+            <li>
+              <strong>Automatic Updates:</strong> Prayer times are automatically
+              calculated for Addis Ababa
+            </li>
+            <li>
+              <strong>Current Prayer:</strong> The current prayer time is
+              highlighted
+            </li>
+            <li>
+              <strong>Countdown:</strong> See how much time remains until the
+              next prayer
+            </li>
+          </ul>
+
+          <h3>
+            <i class="fas fa-cog"></i>
+            <span id="advanced-features-title">Advanced Features</span>
+          </h3>
+          <ul id="advanced-features-list">
+            <li>
+              <strong>Themes:</strong> Personalize the app with different color
+              schemes
+            </li>
+            <li>
+              <strong>Progress Tracking:</strong> Visual indicator showing time
+              progress
+            </li>
+            <li>
+              <strong>Statistics:</strong> Track your countdown activity with
+              detailed stats
+            </li>
+          </ul>
+
+          <h3>
+            <i class="fas fa-pray"></i>
+            <span id="islamic-features-help-title">Islamic Features</span>
+          </h3>
+          <ul id="islamic-features-help-list">
+            <li>
+              <strong>Tasbih Counter:</strong> Keep track of your dhikr with the
+              digital tasbih counter
+            </li>
+            <li>
+              <strong>Qur'an Streak:</strong> Build a daily Qur'an reading habit
+              with streak tracking
+            </li>
+            <li>
+              <strong>Islamic Calendar:</strong> Track Hijri dates and important
+              Islamic events
+            </li>
+            <li>
+              <strong>Qibla Finder:</strong> Find the direction to the Kaaba
+              from anywhere
+            </li>
+            <li>
+              <strong>Daily Dua:</strong> Access a collection of authentic
+              Islamic supplications
+            </li>
+            <li>
+              <strong>Zakat Calculator:</strong> Calculate your Zakat obligation
+              accurately
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="settings-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-cog"></i>
+            <span id="settings-modal-title">Settings</span>
+          </h3>
+          <button class="close-btn" id="close-settings-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="setting-item">
+            <div class="setting-label">
+              <i class="fas fa-bell"></i>
+              <span id="notification-reminders-label"
+                >Notification Reminders</span
+              >
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="notifications-switch" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <div class="setting-label">
+              <i class="fas fa-fire"></i>
+              <span id="animations-label">Animations</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="animations-switch" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <div class="setting-label">
+              <i class="fas fa-sync-alt"></i>
+              <span id="auto-refresh-label">Auto-refresh</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="refresh-switch" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <div class="setting-label">
+              <i class="fas fa-language"></i>
+              <span id="language-label">Language</span>
+            </div>
+            <select id="language-select" style="width: auto; padding: 8px 15px">
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="reminder-modal">
+      <div class="modal-content reminder-modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-bell"></i>
+            <span id="set-reminder-modal-title">Set Reminder</span>
+          </h3>
+          <button class="close-btn" id="close-reminder-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="reminder-form" id="reminder-form">
+            <div class="form-group">
+              <label for="reminder-title"
+                ><i class="fas fa-heading"></i>
+                <span id="reminder-title-label">Reminder Title</span></label
+              >
+              <input
+                type="text"
+                id="reminder-title"
+                placeholder="Enter reminder title"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label
+                ><i class="fas fa-clock"></i>
+                <span id="remind-me-label">Remind Me</span></label
+              >
+              <div class="reminder-options">
+                <div class="reminder-option active" data-days="1">
+                  1 Day Before
+                </div>
+                <div class="reminder-option" data-days="3">3 Days Before</div>
+                <div class="reminder-option" data-days="7">1 Week Before</div>
+                <div class="reminder-option" data-days="30">1 Month Before</div>
+              </div>
+            </div>
+
+            <button type="submit">
+              <i class="fas fa-bell"></i>
+              <span id="set-reminder-modal-btn">Set Reminder</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="share-modal">
+      <div class="modal-content share-modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-share-alt"></i>
+            <span id="share-countdown-modal-title">Share Countdown</span>
+          </h3>
+          <button class="close-btn" id="close-share-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="share-countdown-desc">
+            Share this countdown with your friends:
+          </p>
+          <div class="share-options">
+            <div class="share-option" data-platform="facebook">
+              <i class="fab fa-facebook share-icon facebook"></i>
+              <span>Facebook</span>
+            </div>
+            <div class="share-option" data-platform="whatsapp">
+              <i class="fab fa-whatsapp share-icon whatsapp"></i>
+              <span>WhatsApp</span>
+            </div>
+            <div class="share-option" data-platform="instagram">
+              <i class="fab fa-instagram share-icon instagram"></i>
+              <span>Instagram</span>
+            </div>
+            <div class="share-option" data-platform="telegram">
+              <i class="fab fa-telegram share-icon telegram"></i>
+              <span>Telegram</span>
+            </div>
+            <div class="share-option" data-platform="email">
+              <i class="fas fa-envelope share-icon email"></i>
+              <span>Email</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="delete-modal">
+      <div class="modal-content delete-modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="delete-countdown-title">Delete Countdown</span>
+          </h3>
+          <button class="close-btn" id="close-delete-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="delete-confirmation-text">
+            Are you sure you want to delete this countdown? This action cannot
+            be undone.
+          </p>
+          <div class="delete-actions">
+            <button class="cancel-btn" id="cancel-delete">
+              <i class="fas fa-times"></i>
+              <span id="cancel-btn-text">Cancel</span>
+            </button>
+            <button class="confirm-btn" id="confirm-delete">
+              <i class="fas fa-trash"></i>
+              <span id="delete-btn-text">Delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="edit-modal">
+      <div class="modal-content edit-modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-edit"></i>
+            <span id="edit-countdown-title">Edit Countdown</span>
+          </h3>
+          <button class="close-btn" id="close-edit-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="edit-form">
+            <div class="form-group">
+              <label for="edit-title"
+                ><i class="fas fa-heading"></i>
+                <span id="edit-event-title-label">Event Title</span></label
+              >
+              <input
+                type="text"
+                id="edit-title"
+                placeholder="Event title"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="edit-date"
+                ><i class="fas fa-calendar-alt"></i>
+                <span id="edit-event-date-label">Event Date</span></label
+              >
+              <input type="date" id="edit-date" required />
+            </div>
+            <div class="form-group">
+              <label for="edit-category"
+                ><i class="fas fa-tag"></i>
+                <span id="edit-category-label">Category</span></label
+              >
+              <select id="edit-category">
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+                <option value="holiday">Holiday</option>
+                <option value="education">Education</option>
+                <option value="islamic">Islamic</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <button type="submit">
+              <i class="fas fa-save"></i>
+              <span id="save-changes-btn">Save Changes</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="reminder-notification">
+      <div class="modal-content" style="max-width: 500px">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-bell"></i>
+            <span id="reminder-set-title">Reminder Set</span>
+          </h3>
+          <button class="close-btn" id="close-reminder-notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="reminder-notification-text"></p>
+          <button
+            class="nav-btn"
+            id="ok-reminder-btn"
+            style="width: 100%; margin-top: 20px"
+          >
+            <i class="fas fa-check"></i> <span id="ok-btn-text">OK</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="good-deed-modal">
+      <div class="modal-content" style="max-width: 500px">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-hands-helping"></i>
+            <span id="good-deed-title">Good Deed Reminder</span>
+          </h3>
+          <button class="close-btn" id="close-good-deed-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="good-deed-text">Say SubhanAllah 33 times</p>
+          <button
+            class="nav-btn"
+            id="ok-good-deed-btn"
+            style="width: 100%; margin-top: 20px"
+          >
+            <i class="fas fa-check"></i>
+            <span id="ok-good-deed-btn-text">OK</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
