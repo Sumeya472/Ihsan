@@ -3,14 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ihsan Islamic Countdown App</title>
+    <title>Ihsan - Islamic Countdown Manager</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="theme-islamic-dark" dir="ltr">
+    <button class="lang-switcher" id="lang-switcher">
+      <i class="fas fa-language"></i>
+      <span>EN</span>
+    </button>
+
+    <button class="hamburger-menu" id="hamburger-menu">
+      <i class="fas fa-bars"></i>
+    </button>
+
     <nav class="navbar">
       <div class="nav-container">
         <div class="logo">
@@ -19,21 +32,30 @@
           </div>
           <div class="logo-text" id="logo-text">Ihsan</div>
         </div>
-        <div class="nav-links">
-          <a href="#home" class="nav-link active" data-section="home">Home</a>
-          <a href="#countdowns" class="nav-link" data-section="countdowns"
-            >Countdowns</a
-          >
-          <a href="#prayer-times" class="nav-link" data-section="prayer-times"
-            >Prayer Times</a
-          >
+
+        <div class="nav-links" id="nav-links">
+          <a href="#home" class="nav-link active" data-section="home">
+            <i class="fas fa-home"></i>
+            <span id="nav-home">Home</span>
+          </a>
+          <a href="#countdowns" class="nav-link" data-section="countdowns">
+            <i class="fas fa-clock"></i>
+            <span id="nav-countdowns">Countdowns</span>
+          </a>
+          <a href="#prayer-times" class="nav-link" data-section="prayer-times">
+            <i class="fas fa-pray"></i>
+            <span id="nav-prayer">Prayer Times</span>
+          </a>
           <a
             href="#islamic-features"
             class="nav-link"
             data-section="islamic-features"
-            >Islamic Features</a
           >
+            <i class="fas fa-star-and-crescent"></i>
+            <span id="nav-features">Islamic Features</span>
+          </a>
         </div>
+
         <div class="nav-actions">
           <button class="nav-btn" id="theme-btn">
             <i class="fas fa-palette"></i> <span id="theme-text">Themes</span>
@@ -49,17 +71,47 @@
       </div>
     </nav>
 
+    <div class="floating-buttons">
+      <button class="floating-btn" id="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+      <button class="floating-btn" id="quick-tasbih-btn">
+        <i class="fas fa-pray"></i>
+      </button>
+    </div>
+
     <section id="home" class="section active homepage">
+      <div class="home-overlay"></div>
       <div class="home-content">
-        <h1 class="home-title">Ihsan Islamic Countdown App</h1>
-        <p class="home-subtitle">
-          Your spiritual companion for tracking Islamic events and daily
-          practices
-        </p>
-        <button class="get-started-btn" id="get-started-btn">
-          <i class="fas fa-play-circle"></i>
-          <span>Get Started</span>
-        </button>
+        <div class="logo-large">
+          <div class="logo-icon-large">
+            <i class="fas fa-mosque"></i>
+          </div>
+          <h1 class="home-title">Ihsan</h1>
+          <div class="home-subtitle-container">
+            <p class="home-subtitle">Islamic Countdown Manager</p>
+            <div class="title-decoration">
+              <div class="decoration-line"></div>
+              <i class="fas fa-star"></i>
+              <div class="decoration-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-buttons">
+          <button class="cta-btn primary" id="get-started-btn">
+            <i class="fas fa-play-circle"></i>
+            <span id="get-started-text">Get Started</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-elements">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+        <div class="bg-pattern pattern-1"></div>
+        <div class="bg-pattern pattern-2"></div>
       </div>
     </section>
 
@@ -113,10 +165,10 @@
             </h2>
             <form id="countdown-form">
               <div class="form-group">
-                <label for="title"
-                  ><i class="fas fa-heading"></i>
-                  <span id="event-title-label">Event Title</span></label
-                >
+                <label for="title">
+                  <i class="fas fa-heading"></i>
+                  <span id="event-title-label">Event Title</span>
+                </label>
                 <input
                   type="text"
                   id="title"
@@ -125,17 +177,17 @@
                 />
               </div>
               <div class="form-group">
-                <label for="date"
-                  ><i class="fas fa-calendar-alt"></i>
-                  <span id="event-date-label">Event Date</span></label
-                >
+                <label for="date">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span id="event-date-label">Event Date</span>
+                </label>
                 <input type="date" id="date" required />
               </div>
               <div class="form-group">
-                <label for="category"
-                  ><i class="fas fa-tag"></i>
-                  <span id="category-label">Category</span></label
-                >
+                <label for="category">
+                  <i class="fas fa-tag"></i>
+                  <span id="category-label">Category</span>
+                </label>
                 <select id="category">
                   <option value="personal">Personal</option>
                   <option value="work">Work</option>
@@ -505,18 +557,17 @@
         </div>
         <div class="modal-body help-content">
           <h3>
-            <i class="fas fa-star"></i>
-            <span id="getting-started-title">Getting Started</span>
+            <i class="fas fa-star"></i
+            ><span id="getting-started-title">Getting Started</span>
           </h3>
           <p id="getting-started-desc">
             Welcome to Ihsan - Islamic Countdown Manager! This app helps you
             track important events with beautiful countdown timers and Islamic
             features.
           </p>
-
           <h3>
-            <i class="fas fa-plus-circle"></i>
-            <span id="creating-countdowns-title">Creating Countdowns</span>
+            <i class="fas fa-plus-circle"></i
+            ><span id="creating-countdowns-title">Creating Countdowns</span>
           </h3>
           <ol id="creating-countdowns-list">
             <li>Go to the "Add New Countdown" section</li>
@@ -525,10 +576,9 @@
             <li>Choose a category to organize your countdown</li>
             <li>Click "Add Countdown" to save it</li>
           </ol>
-
           <h3>
-            <i class="fas fa-list"></i>
-            <span id="managing-countdowns-title">Managing Countdowns</span>
+            <i class="fas fa-list"></i
+            ><span id="managing-countdowns-title">Managing Countdowns</span>
           </h3>
           <ul id="managing-countdowns-list">
             <li>
@@ -547,10 +597,9 @@
               your list
             </li>
           </ul>
-
           <h3>
-            <i class="fas fa-clock"></i>
-            <span id="prayer-times-help-title">Prayer Times</span>
+            <i class="fas fa-clock"></i
+            ><span id="prayer-times-help-title">Prayer Times</span>
           </h3>
           <ul id="prayer-times-help-list">
             <li>
@@ -566,10 +615,9 @@
               next prayer
             </li>
           </ul>
-
           <h3>
-            <i class="fas fa-cog"></i>
-            <span id="advanced-features-title">Advanced Features</span>
+            <i class="fas fa-cog"></i
+            ><span id="advanced-features-title">Advanced Features</span>
           </h3>
           <ul id="advanced-features-list">
             <li>
@@ -585,10 +633,9 @@
               detailed stats
             </li>
           </ul>
-
           <h3>
-            <i class="fas fa-pray"></i>
-            <span id="islamic-features-help-title">Islamic Features</span>
+            <i class="fas fa-pray"></i
+            ><span id="islamic-features-help-title">Islamic Features</span>
           </h3>
           <ul id="islamic-features-help-list">
             <li>
@@ -692,10 +739,10 @@
         <div class="modal-body">
           <form class="reminder-form" id="reminder-form">
             <div class="form-group">
-              <label for="reminder-title"
-                ><i class="fas fa-heading"></i>
-                <span id="reminder-title-label">Reminder Title</span></label
-              >
+              <label for="reminder-title">
+                <i class="fas fa-heading"></i>
+                <span id="reminder-title-label">Reminder Title</span>
+              </label>
               <input
                 type="text"
                 id="reminder-title"
@@ -703,11 +750,10 @@
                 required
               />
             </div>
-
             <div class="form-group">
               <label
-                ><i class="fas fa-clock"></i>
-                <span id="remind-me-label">Remind Me</span></label
+                ><i class="fas fa-clock"></i
+                ><span id="remind-me-label">Remind Me</span></label
               >
               <div class="reminder-options">
                 <div class="reminder-option active" data-days="1">
@@ -718,7 +764,6 @@
                 <div class="reminder-option" data-days="30">1 Month Before</div>
               </div>
             </div>
-
             <button type="submit">
               <i class="fas fa-bell"></i>
               <span id="set-reminder-modal-btn">Set Reminder</span>
@@ -813,10 +858,10 @@
         <div class="modal-body">
           <form id="edit-form">
             <div class="form-group">
-              <label for="edit-title"
-                ><i class="fas fa-heading"></i>
-                <span id="edit-event-title-label">Event Title</span></label
-              >
+              <label for="edit-title">
+                <i class="fas fa-heading"></i>
+                <span id="edit-event-title-label">Event Title</span>
+              </label>
               <input
                 type="text"
                 id="edit-title"
@@ -825,17 +870,17 @@
               />
             </div>
             <div class="form-group">
-              <label for="edit-date"
-                ><i class="fas fa-calendar-alt"></i>
-                <span id="edit-event-date-label">Event Date</span></label
-              >
+              <label for="edit-date">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="edit-event-date-label">Event Date</span>
+              </label>
               <input type="date" id="edit-date" required />
             </div>
             <div class="form-group">
-              <label for="edit-category"
-                ><i class="fas fa-tag"></i>
-                <span id="edit-category-label">Category</span></label
-              >
+              <label for="edit-category">
+                <i class="fas fa-tag"></i>
+                <span id="edit-category-label">Category</span>
+              </label>
               <select id="edit-category">
                 <option value="personal">Personal</option>
                 <option value="work">Work</option>
@@ -902,6 +947,39 @@
         </div>
       </div>
     </div>
+
+    <div class="modal" id="quick-tasbih-modal">
+      <div class="modal-content" style="max-width: 400px">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-pray"></i>
+            <span>Quick Tasbih</span>
+          </h3>
+          <button class="close-btn" id="close-quick-tasbih">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align: center">
+          <div class="tasbih-display" id="quick-tasbih-count">0</div>
+          <div
+            class="tasbih-buttons"
+            style="grid-template-columns: repeat(2, 1fr); margin: 20px 0"
+          >
+            <button class="tasbih-btn" id="quick-count-btn">
+              <i class="fas fa-plus"></i> <span>Count</span>
+            </button>
+            <button class="tasbih-btn reset-btn" id="quick-reset-btn">
+              <i class="fas fa-redo"></i> <span>Reset</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
