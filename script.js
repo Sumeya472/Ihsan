@@ -1,43 +1,90 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll(".nav-link");
-  const sections = document.querySelectorAll(".section");
-  const getStartedBtn = document.getElementById("get-started-btn");
+const navLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll(".section");
+const getStartedBtn = document.getElementById("get-started-btn");
+const exploreFeaturesBtn = document.getElementById("explore-features-btn");
+const hamburgerMenu = document.getElementById("hamburger-menu");
+const mobileNavLinks = document.getElementById("nav-links");
+const scrollTopBtn = document.getElementById("scroll-top-btn");
+const quickTasbihBtn = document.getElementById("quick-tasbih-btn");
+const langSwitcher = document.getElementById("lang-switcher");
+const themeBtn = document.getElementById("theme-btn");
+const helpBtn = document.getElementById("help-btn");
+const settingsBtn = document.getElementById("settings-btn");
+const reminderBtn = document.getElementById("reminder-btn");
+const shareBtn = document.getElementById("share-btn");
+const themeModal = document.getElementById("theme-modal");
+const helpModal = document.getElementById("help-modal");
+const settingsModal = document.getElementById("settings-modal");
+const reminderModal = document.getElementById("reminder-modal");
+const shareModal = document.getElementById("share-modal");
+const deleteModal = document.getElementById("delete-modal");
+const editModal = document.getElementById("edit-modal");
+const reminderNotification = document.getElementById("reminder-notification");
+const goodDeedModal = document.getElementById("good-deed-modal");
+const quickTasbihModal = document.getElementById("quick-tasbih-modal");
+const closeThemeModal = document.getElementById("close-theme-modal");
+const closeHelpModal = document.getElementById("close-help-modal");
+const closeSettingsModal = document.getElementById("close-settings-modal");
+const closeReminderModal = document.getElementById("close-reminder-modal");
+const closeShareModal = document.getElementById("close-share-modal");
+const closeDeleteModal = document.getElementById("close-delete-modal");
+const closeEditModal = document.getElementById("close-edit-modal");
+const closeReminderNotification = document.getElementById(
+  "close-reminder-notification"
+);
+const closeGoodDeedModal = document.getElementById("close-good-deed-modal");
+const closeQuickTasbih = document.getElementById("close-quick-tasbih");
+const notificationsSwitch = document.getElementById("notifications-switch");
+const animationsSwitch = document.getElementById("animations-switch");
+const refreshSwitch = document.getElementById("refresh-switch");
+const countdownForm = document.getElementById("countdown-form");
+const reminderForm = document.getElementById("reminder-form");
+const editForm = document.getElementById("edit-form");
+const countdownList = document.getElementById("countdown-list");
+const activeTitle = document.getElementById("active-title");
+const totalCountEl = document.getElementById("total-count");
+const activeCountEl = document.getElementById("active-count");
+const completedCountEl = document.getElementById("completed-count");
+const cancelDeleteBtn = document.getElementById("cancel-delete");
+const confirmDeleteBtn = document.getElementById("confirm-delete");
+const okReminderBtn = document.getElementById("ok-reminder-btn");
+const okGoodDeedBtn = document.getElementById("ok-good-deed-btn");
+const expiredMessage = document.getElementById("expired-message");
+const countdownDisplay = document.getElementById("countdown-display");
+const reminderNotificationText = document.getElementById(
+  "reminder-notification-text"
+);
+const goodDeedText = document.getElementById("good-deed-text");
+const prayerTimesGrid = document.getElementById("prayer-times-grid");
+const languageSelect = document.getElementById("language-select");
+const quickCountBtn = document.getElementById("quick-count-btn");
+const quickResetBtn = document.getElementById("quick-reset-btn");
+const quickTasbihCountEl = document.getElementById("quick-tasbih-count");
 
-  function setActiveSection(sectionId) {
-    sections.forEach((section) => {
-      section.classList.remove("active");
-    });
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-    });
-
-    document.getElementById(sectionId).classList.add("active");
-    document
-      .querySelector(`.nav-link[data-section="${sectionId}"]`)
-      .classList.add("active");
-
-    window.location.hash = sectionId;
-  }
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      const sectionId = this.getAttribute("data-section");
-      setActiveSection(sectionId);
-    });
-  });
-
-  getStartedBtn.addEventListener("click", function () {
-    setActiveSection("countdowns");
-  });
-
-  if (window.location.hash) {
-    const sectionId = window.location.hash.substring(1);
-    if (document.getElementById(sectionId)) {
-      setActiveSection(sectionId);
-    }
-  }
-});
+const tasbihCountEl = document.getElementById("tasbih-count");
+const subhanallahBtn = document.getElementById("subhanallah-btn");
+const alhamdulillahBtn = document.getElementById("alhamdulillah-btn");
+const allahuakbarBtn = document.getElementById("allahuakbar-btn");
+const astaghfirullahBtn = document.getElementById("astaghfirullah-btn");
+const resetTasbihBtn = document.getElementById("reset-tasbih");
+const streakCountEl = document.getElementById("streak-count");
+const streakInfoEl = document.getElementById("streak-info");
+const logReadingBtn = document.getElementById("log-reading");
+const hijriDateEl = document.getElementById("hijri-date");
+const gregorianDateEl = document.getElementById("gregorian-date");
+const islamicMonthEl = document.getElementById("islamic-month");
+const specialDaysEl = document.getElementById("special-days");
+const compassNeedle = document.getElementById("compass-needle");
+const qiblaAngleEl = document.getElementById("qibla-angle");
+const calibrateQiblaBtn = document.getElementById("calibrate-qibla");
+const duaArabicEl = document.getElementById("dua-arabic");
+const duaTranslationEl = document.getElementById("dua-translation");
+const duaReferenceEl = document.getElementById("dua-reference");
+const prevDuaBtn = document.getElementById("prev-dua");
+const nextDuaBtn = document.getElementById("next-dua");
+const zakatFormEl = document.getElementById("zakat-form");
+const zakatResultEl = document.getElementById("zakat-result");
+const zakatAmountEl = document.getElementById("zakat-amount");
 
 const translations = {
   en: {
@@ -45,32 +92,37 @@ const translations = {
     "theme-text": "Themes",
     "help-text": "Help",
     "settings-text": "Settings",
-
+    "nav-home": "Home",
+    "nav-countdowns": "Countdowns",
+    "nav-prayer": "Prayer Times",
+    "nav-features": "Islamic Features",
+    "home-description":
+      "Your spiritual companion for tracking Islamic events and daily practices<br>with precision, devotion, and beautiful reminders",
+    "get-started-text": "Get Started",
+    "explore-features-text": "Explore Features",
+    "stat-countdowns": "Countdowns",
+    "stat-prayer": "Prayer Times",
+    "stat-features": "Islamic Tools",
+    "scroll-text": "Scroll to explore",
     "active-countdown-title": "Active Countdown",
     "days-label": "Days",
     "hours-label": "Hours",
     "minutes-label": "Minutes",
     "seconds-label": "Seconds",
-
     "add-countdown-title": "Add New Countdown",
     "event-title-label": "Event Title",
     "event-date-label": "Event Date",
     "category-label": "Category",
     "add-countdown-btn": "Add Countdown",
-
     "my-countdowns-title": "My Countdowns",
-
     "statistics-title": "Statistics",
     "total-label": "Total",
     "active-label": "Active",
     "completed-label": "Completed",
-
     "quick-actions-title": "Quick Actions",
     "set-reminder-btn": "Set Reminder",
     "share-countdown-btn": "Share Countdown",
-
     "prayer-times-title": "Prayer Times (Addis Ababa)",
-
     "islamic-features-title": "Islamic Features",
     "tasbih-counter-title": "Tasbih Counter",
     "reset-counter-btn": "Reset Counter",
@@ -82,10 +134,8 @@ const translations = {
     "daily-dua-title": "Daily Dua",
     "zakat-calculator-title": "Zakat Calculator",
     "calculate-zakat-btn": "Calculate Zakat",
-
     "footer-text":
-      "© 2025 Ihsan Islamic Countdown App | Track your most important moments here.",
-
+      "© 2025 Ihsan Islamic Countdown App | Track your most important moments with precision and spirituality.",
     "choose-theme-title": "Choose Theme",
     "theme-description":
       "Select a theme to change the appearance of your countdown manager:",
@@ -129,32 +179,37 @@ const translations = {
     "theme-text": "السمات",
     "help-text": "مساعدة",
     "settings-text": "الإعدادات",
-
+    "nav-home": "الرئيسية",
+    "nav-countdowns": "العد التنازلي",
+    "nav-prayer": "أوقات الصلاة",
+    "nav-features": "الميزات الإسلامية",
+    "home-description":
+      "رفيقك الروحي لتتبع الأحداث الإسلامية والممارسات اليومية<br>بدقة وتفان وتذكيرات جميلة",
+    "get-started-text": "ابدأ الآن",
+    "explore-features-text": "استكشاف الميزات",
+    "stat-countdowns": "العدادات",
+    "stat-prayer": "أوقات الصلاة",
+    "stat-features": "الأدوات الإسلامية",
+    "scroll-text": "انتقل للاستكشاف",
     "active-countdown-title": "العد التنازلي النشط",
     "days-label": "أيام",
     "hours-label": "ساعات",
     "minutes-label": "دقائق",
     "seconds-label": "ثواني",
-
     "add-countdown-title": "إضافة عد تنازلي جديد",
     "event-title-label": "عنوان الحدث",
     "event-date-label": "تاريخ الحدث",
     "category-label": "الفئة",
     "add-countdown-btn": "إضافة العد التنازلي",
-
     "my-countdowns-title": "العدادات التنازلية الخاصة بي",
-
     "statistics-title": "الإحصائيات",
     "total-label": "الإجمالي",
     "active-label": "نشط",
     "completed-label": "مكتمل",
-
     "quick-actions-title": "إجراءات سريعة",
     "set-reminder-btn": "تعيين تذكير",
     "share-countdown-btn": "مشاركة العد التنازلي",
-
     "prayer-times-title": "أوقات الصلاة (أديس أبابا)",
-
     "islamic-features-title": "الميزات الإسلامية",
     "tasbih-counter-title": "عداد التسبيح",
     "reset-counter-btn": "إعادة تعيين العداد",
@@ -166,10 +221,8 @@ const translations = {
     "daily-dua-title": "الدعاء اليومي",
     "zakat-calculator-title": "حاسبة الزكاة",
     "calculate-zakat-btn": "حساب الزكاة",
-
     "footer-text":
       "إحسان - مدير العد التنازلي الإسلامي 2025 | تتبع لحظاتك الأكثر أهمية بدقة وروحانية",
-
     "choose-theme-title": "اختر السمة",
     "theme-description": "حدد سمة لتغيير مظهر مدير العد التنازلي الخاص بك:",
     "help-center-title": "مركز المساعدة",
@@ -209,81 +262,6 @@ const translations = {
   },
 };
 
-const themeBtn = document.getElementById("theme-btn");
-const helpBtn = document.getElementById("help-btn");
-const settingsBtn = document.getElementById("settings-btn");
-const reminderBtn = document.getElementById("reminder-btn");
-const shareBtn = document.getElementById("share-btn");
-const themeModal = document.getElementById("theme-modal");
-const helpModal = document.getElementById("help-modal");
-const settingsModal = document.getElementById("settings-modal");
-const reminderModal = document.getElementById("reminder-modal");
-const shareModal = document.getElementById("share-modal");
-const deleteModal = document.getElementById("delete-modal");
-const editModal = document.getElementById("edit-modal");
-const reminderNotification = document.getElementById("reminder-notification");
-const goodDeedModal = document.getElementById("good-deed-modal");
-const closeThemeModal = document.getElementById("close-theme-modal");
-const closeHelpModal = document.getElementById("close-help-modal");
-const closeSettingsModal = document.getElementById("close-settings-modal");
-const closeReminderModal = document.getElementById("close-reminder-modal");
-const closeShareModal = document.getElementById("close-share-modal");
-const closeDeleteModal = document.getElementById("close-delete-modal");
-const closeEditModal = document.getElementById("close-edit-modal");
-const closeReminderNotification = document.getElementById(
-  "close-reminder-notification"
-);
-const closeGoodDeedModal = document.getElementById("close-good-deed-modal");
-const notificationsSwitch = document.getElementById("notifications-switch");
-const animationsSwitch = document.getElementById("animations-switch");
-const refreshSwitch = document.getElementById("refresh-switch");
-const countdownForm = document.getElementById("countdown-form");
-const reminderForm = document.getElementById("reminder-form");
-const editForm = document.getElementById("edit-form");
-const countdownList = document.getElementById("countdown-list");
-const activeTitle = document.getElementById("active-title");
-const totalCountEl = document.getElementById("total-count");
-const activeCountEl = document.getElementById("active-count");
-const completedCountEl = document.getElementById("completed-count");
-const cancelDeleteBtn = document.getElementById("cancel-delete");
-const confirmDeleteBtn = document.getElementById("confirm-delete");
-const okReminderBtn = document.getElementById("ok-reminder-btn");
-const okGoodDeedBtn = document.getElementById("ok-good-deed-btn");
-const expiredMessage = document.getElementById("expired-message");
-const countdownDisplay = document.getElementById("countdown-display");
-const reminderNotificationText = document.getElementById(
-  "reminder-notification-text"
-);
-const goodDeedText = document.getElementById("good-deed-text");
-const prayerTimesGrid = document.getElementById("prayer-times-grid");
-const languageSelect = document.getElementById("language-select");
-
-const tasbihCountEl = document.getElementById("tasbih-count");
-const subhanallahBtn = document.getElementById("subhanallah-btn");
-const alhamdulillahBtn = document.getElementById("alhamdulillah-btn");
-const allahuakbarBtn = document.getElementById("allahuakbar-btn");
-const astaghfirullahBtn = document.getElementById("astaghfirullah-btn");
-const resetTasbihBtn = document.getElementById("reset-tasbih");
-const streakCountEl = document.getElementById("streak-count");
-const streakInfoEl = document.getElementById("streak-info");
-const logReadingBtn = document.getElementById("log-reading");
-
-const hijriDateEl = document.getElementById("hijri-date");
-const gregorianDateEl = document.getElementById("gregorian-date");
-const islamicMonthEl = document.getElementById("islamic-month");
-const specialDaysEl = document.getElementById("special-days");
-const compassNeedle = document.getElementById("compass-needle");
-const qiblaAngleEl = document.getElementById("qibla-angle");
-const calibrateQiblaBtn = document.getElementById("calibrate-qibla");
-const duaArabicEl = document.getElementById("dua-arabic");
-const duaTranslationEl = document.getElementById("dua-translation");
-const duaReferenceEl = document.getElementById("dua-reference");
-const prevDuaBtn = document.getElementById("prev-dua");
-const nextDuaBtn = document.getElementById("next-dua");
-const zakatFormEl = document.getElementById("zakat-form");
-const zakatResultEl = document.getElementById("zakat-result");
-const zakatAmountEl = document.getElementById("zakat-amount");
-
 let countdowns = [
   {
     id: "1",
@@ -315,11 +293,11 @@ let countdownToEdit = null;
 let currentLanguage = localStorage.getItem("language") || "en";
 
 let tasbihCount = 0;
+let quickTasbihCount = 0;
 let quranStreak = 0;
 let lastQuranDate = null;
 let goodDeedInterval = null;
 let laylatulQadrReminderActive = false;
-
 let currentDuaIndex = 0;
 let qiblaDirection = 0;
 let compassCalibrated = false;
@@ -430,364 +408,211 @@ const goodDeeds = [
 function setLanguage(lang) {
   currentLanguage = lang;
   localStorage.setItem("language", lang);
-
   document.body.dir = lang === "ar" ? "rtl" : "ltr";
 
-  Object.keys(translations[lang]).forEach((key) => {
-    const element = document.getElementById(key);
-    if (element) {
-      element.textContent = translations[lang][key];
-    }
-  });
+  const langSpan = langSwitcher.querySelector("span");
+  langSpan.textContent = lang === "ar" ? "AR" : "EN";
 
-  languageSelect.value = lang;
+  updateAllTranslations(lang);
+
+  if (languageSelect) {
+    languageSelect.value = lang;
+  }
+
+  updateNavigationLayout(lang);
 
   renderCountdownList();
 }
 
-function calculatePrayerTimes() {
-  const today = new Date();
-  const day = today.getDate();
-  const month = today.getMonth() + 1;
-
-  const fajr = "05:30";
-  const sunrise = "06:45";
-  const dhuhr = "12:45";
-  const asr = "15:30";
-  const maghrib = "18:30";
-  const isha = "19:45";
-
-  return [
-    { name: "Fajr", time: fajr },
-    { name: "Sunrise", time: sunrise },
-    { name: "Dhuhr", time: dhuhr },
-    { name: "Asr", time: asr },
-    { name: "Maghrib", time: maghrib },
-    { name: "Isha", time: isha },
-  ];
-}
-
-function updatePrayerTimes() {
-  prayerTimes = calculatePrayerTimes();
-  const now = new Date();
-  const currentTime = now.getHours() * 60 + now.getMinutes();
-
-  currentPrayerIndex = -1;
-  nextPrayerIndex = -1;
-
-  for (let i = 0; i < prayerTimes.length; i++) {
-    const [hours, minutes] = prayerTimes[i].time.split(":").map(Number);
-    const prayerTime = hours * 60 + minutes;
-
-    if (prayerTime <= currentTime) {
-      currentPrayerIndex = i;
-    } else if (nextPrayerIndex === -1) {
-      nextPrayerIndex = i;
-    }
-  }
-
-  if (nextPrayerIndex === -1) {
-    nextPrayerIndex = 0;
-  }
-
-  renderPrayerTimes();
-}
-
-function renderPrayerTimes() {
-  prayerTimesGrid.innerHTML = "";
-
-  prayerTimes.forEach((prayer, index) => {
-    const isActive = index === currentPrayerIndex;
-    const prayerCard = document.createElement("div");
-    prayerCard.className = `prayer-time-card ${isActive ? "active" : ""}`;
-
-    const [hours, minutes] = prayer.time.split(":");
-    const formattedTime = `${hours}:${minutes}`;
-
-    let remainingTime = "";
-    if (index === nextPrayerIndex) {
-      const now = new Date();
-      const [nextHours, nextMinutes] = prayer.time.split(":").map(Number);
-      const nextPrayerTime = new Date();
-      nextPrayerTime.setHours(nextHours, nextMinutes, 0, 0);
-
-      if (nextPrayerTime < now) {
-        nextPrayerTime.setDate(nextPrayerTime.getDate() + 1);
+function updateAllTranslations(lang) {
+  Object.keys(translations[lang]).forEach((key) => {
+    const element = document.getElementById(key);
+    if (element) {
+      if (key === "home-description") {
+        element.innerHTML = translations[lang][key];
+      } else {
+        element.textContent = translations[lang][key];
       }
-
-      const diffMs = nextPrayerTime - now;
-      const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
-      const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-
-      remainingTime =
-        currentLanguage === "ar"
-          ? `بعد ${diffHrs}س ${diffMins}د`
-          : `in ${diffHrs}h ${diffMins}m`;
     }
-
-    prayerCard.innerHTML = `
-            <div class="prayer-name">${prayer.name}</div>
-            <div class="prayer-time">${formattedTime}</div>
-            ${
-              remainingTime
-                ? `<div class="prayer-remaining">${remainingTime}</div>`
-                : ""
-            }
-          `;
-
-    prayerTimesGrid.appendChild(prayerCard);
-  });
-}
-
-function initIslamicCalendar() {
-  updateIslamicDate();
-  setInterval(updateIslamicDate, 86400000);
-}
-
-function updateIslamicDate() {
-  const today = new Date();
-  const gregorianDate = today.toLocaleDateString("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
   });
 
-  const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth();
-  const currentDay = today.getDate();
+  if (prayerTimesGrid.innerHTML) {
+    renderPrayerTimes();
+  }
+}
 
-  const baseHijri = { year: 1446, month: 0, day: 1 };
-  const baseGregorian = new Date(2024, 5, 27);
+function updateNavigationLayout(lang) {
+  const navContainer = document.querySelector(".nav-container");
+  const navActions = document.querySelector(".nav-actions");
 
-  const diffTime = Math.abs(today - baseGregorian);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  if (lang === "ar") {
+    navContainer.style.flexDirection = "row-reverse";
+    navActions.style.flexDirection = "row-reverse";
 
-  let hijriDays = baseHijri.day + diffDays;
-  let hijriMonth = baseHijri.month;
-  let hijriYear = baseHijri.year;
+    document.querySelectorAll(".nav-btn").forEach((btn) => {
+      btn.style.flexDirection = "row-reverse";
+    });
 
-  while (hijriDays > 29) {
-    hijriDays -= 29;
-    hijriMonth++;
-    if (hijriMonth >= 12) {
-      hijriMonth = 0;
-      hijriYear++;
+    document.querySelectorAll(".cta-btn").forEach((btn) => {
+      btn.style.flexDirection = "row-reverse";
+    });
+  } else {
+    navContainer.style.flexDirection = "row";
+    navActions.style.flexDirection = "row";
+
+    document.querySelectorAll(".nav-btn").forEach((btn) => {
+      btn.style.flexDirection = "row";
+    });
+
+    document.querySelectorAll(".cta-btn").forEach((btn) => {
+      btn.style.flexDirection = "row";
+    });
+  }
+}
+
+function setActiveSection(sectionId) {
+  sections.forEach((section) => {
+    section.classList.remove("active");
+  });
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+  });
+
+  document.getElementById(sectionId).classList.add("active");
+  document
+    .querySelector(`.nav-link[data-section="${sectionId}"]`)
+    .classList.add("active");
+  window.location.hash = sectionId;
+
+  if (sectionId === "home") {
+    document.body.style.overflow = "hidden";
+    scrollTopBtn.style.display = "none";
+  } else {
+    document.body.style.overflow = "auto";
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.style.display = "flex";
     }
   }
+}
 
-  const hijriDate = `${hijriDays} ${islamicMonths[hijriMonth]} ${hijriYear}`;
-  const monthInfo = `${islamicMonths[hijriMonth]} - ${monthDescriptions[hijriMonth]}`;
+function initMobileMenu() {
+  hamburgerMenu.addEventListener("click", function () {
+    mobileNavLinks.classList.toggle("active");
+    this.classList.toggle("active");
 
-  hijriDateEl.textContent = hijriDate;
-  gregorianDateEl.textContent = gregorianDate;
-  islamicMonthEl.textContent = monthInfo;
-
-  const specialDayKey = `${hijriDays}-${hijriMonth + 1}`;
-  if (specialDays[specialDayKey]) {
-    specialDaysEl.innerHTML = `<p>${specialDays[specialDayKey]}</p>`;
-  } else {
-    if (hijriMonth === 8) {
-      specialDaysEl.innerHTML = `<p>Fasting Day ${hijriDays} of 30</p>`;
+    if (currentLanguage === "ar") {
+      mobileNavLinks.style.textAlign = "right";
     } else {
-      specialDaysEl.innerHTML = "";
+      mobileNavLinks.style.textAlign = "left";
     }
-  }
-}
-
-function initQiblaFinder() {
-  if (window.DeviceOrientationEvent) {
-    deviceOrientationSupported = true;
-    window.addEventListener("deviceorientation", handleDeviceOrientation);
-  } else {
-    qiblaAngleEl.textContent =
-      currentLanguage === "ar"
-        ? "اتجاه القبلة: غير متوفر على هذا الجهاز"
-        : "Qibla Direction: Not available on this device";
-  }
-
-  calibrateQiblaBtn.addEventListener("click", function () {
-    calibrateCompass();
   });
 
-  qiblaDirection = Math.floor(Math.random() * 360);
-  updateCompassDisplay();
-}
-
-function handleDeviceOrientation(event) {
-  if (!compassCalibrated) return;
-
-  let direction = 0;
-  if (event.webkitCompassHeading) {
-    direction = event.webkitCompassHeading;
-  } else if (event.alpha) {
-    direction = event.alpha;
-  }
-
-  const angleToQibla = (360 - direction + qiblaDirection) % 360;
-
-  compassNeedle.style.transform = `translateX(-50%) rotate(${angleToQibla}deg)`;
-
-  qiblaAngleEl.textContent =
-    currentLanguage === "ar"
-      ? `اتجاه القبلة: ${Math.round(angleToQibla)}°`
-      : `Qibla Direction: ${Math.round(angleToQibla)}°`;
-}
-
-function calibrateCompass() {
-  compassCalibrated = true;
-
-  if (!deviceOrientationSupported) {
-    const simulatedAngle = Math.floor(Math.random() * 360);
-    compassNeedle.style.transform = `translateX(-50%) rotate(${simulatedAngle}deg)`;
-    qiblaAngleEl.textContent =
-      currentLanguage === "ar"
-        ? `اتجاه القبلة: ${simulatedAngle}° (محاكاة)`
-        : `Qibla Direction: ${simulatedAngle}° (simulated)`;
-  }
-
-  showReminderNotification(
-    currentLanguage === "ar"
-      ? "تم معايرة البوصلة بنجاح!"
-      : "Compass calibrated successfully!"
-  );
-}
-
-function updateCompassDisplay() {
-  if (!compassCalibrated) {
-    compassNeedle.style.transform = `translateX(-50%) rotate(0deg)`;
-    qiblaAngleEl.textContent =
-      currentLanguage === "ar"
-        ? "اتجاه القبلة: يرجى المعايرة"
-        : "Qibla Direction: Please calibrate";
-  }
-}
-
-function initDailyDua() {
-  const savedDuaIndex = localStorage.getItem("currentDuaIndex");
-  if (savedDuaIndex) {
-    currentDuaIndex = parseInt(savedDuaIndex);
-  }
-
-  displayDua(currentDuaIndex);
-
-  prevDuaBtn.addEventListener("click", function () {
-    currentDuaIndex = (currentDuaIndex - 1 + duas.length) % duas.length;
-    displayDua(currentDuaIndex);
-    localStorage.setItem("currentDuaIndex", currentDuaIndex);
+  document.addEventListener("click", function (event) {
+    if (
+      !hamburgerMenu.contains(event.target) &&
+      !mobileNavLinks.contains(event.target)
+    ) {
+      mobileNavLinks.classList.remove("active");
+      hamburgerMenu.classList.remove("active");
+    }
   });
 
-  nextDuaBtn.addEventListener("click", function () {
-    currentDuaIndex = (currentDuaIndex + 1) % duas.length;
-    displayDua(currentDuaIndex);
-    localStorage.setItem("currentDuaIndex", currentDuaIndex);
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", function () {
+      mobileNavLinks.classList.remove("active");
+      hamburgerMenu.classList.remove("active");
+    });
   });
 }
 
-function displayDua(index) {
-  const dua = duas[index];
-  duaArabicEl.textContent = dua.arabic;
-  duaTranslationEl.textContent = dua.translation;
-  duaReferenceEl.textContent = dua.reference;
-}
+function initLanguageSwitcher() {
+  langSwitcher.addEventListener("click", function () {
+    const newLang = currentLanguage === "en" ? "ar" : "en";
+    setLanguage(newLang);
 
-function initZakatCalculator() {
-  zakatFormEl.addEventListener("submit", function (e) {
-    e.preventDefault();
-    calculateZakat();
-  });
-}
-
-function calculateZakat() {
-  const cashAssets =
-    parseFloat(document.getElementById("cash-assets").value) || 0;
-  const goldValue =
-    parseFloat(document.getElementById("gold-value").value) || 0;
-  const silverValue =
-    parseFloat(document.getElementById("silver-value").value) || 0;
-  const businessAssets =
-    parseFloat(document.getElementById("business-assets").value) || 0;
-
-  const totalAssets = cashAssets + goldValue + silverValue + businessAssets;
-
-  const nisab = 4000;
-
-  if (totalAssets < nisab) {
     showReminderNotification(
-      currentLanguage === "ar"
-        ? "أصولك لا تصل إلى النصاب. لا زكاة واجبة."
-        : "Your assets do not meet the nisab threshold. No Zakat is due."
+      newLang === "ar"
+        ? "تم تغيير اللغة إلى العربية"
+        : "Language changed to English"
     );
-    zakatResultEl.style.display = "none";
-    return;
-  }
-
-  const zakatAmount = totalAssets * 0.025;
-
-  zakatAmountEl.textContent = `$${zakatAmount.toFixed(2)}`;
-  zakatResultEl.style.display = "block";
+  });
 }
 
-function saveCountdowns() {
-  localStorage.setItem("countdowns", JSON.stringify(countdowns));
-}
-
-function saveActiveCountdown(id) {
-  activeCountdownId = id;
-  localStorage.setItem("activeCountdownId", id);
-}
-
-function saveIslamicData() {
-  const islamicData = {
-    tasbihCount,
-    quranStreak,
-    lastQuranDate,
-  };
-  localStorage.setItem("islamicData", JSON.stringify(islamicData));
-}
-
-function loadIslamicData() {
-  const savedData = localStorage.getItem("islamicData");
-  if (savedData) {
-    const islamicData = JSON.parse(savedData);
-    tasbihCount = islamicData.tasbihCount || 0;
-    quranStreak = islamicData.quranStreak || 0;
-    lastQuranDate = islamicData.lastQuranDate || null;
-
-    tasbihCountEl.textContent = tasbihCount;
-    streakCountEl.textContent = quranStreak;
-    updateStreakInfo();
+function initExploreFeatures() {
+  if (exploreFeaturesBtn) {
+    exploreFeaturesBtn.addEventListener("click", function () {
+      setActiveSection("countdowns");
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.getElementById("countdowns").offsetTop - 80,
+          behavior: "smooth",
+        });
+      }, 100);
+    });
   }
 }
 
-function getActiveCountdown() {
-  return localStorage.getItem("activeCountdownId");
+function initScrollTopButton() {
+  scrollTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  window.addEventListener("scroll", function () {
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.style.display = "flex";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+
+    const scrollIndicator = document.querySelector(".scroll-indicator");
+    if (scrollIndicator) {
+      if (window.pageYOffset > 100) {
+        scrollIndicator.style.opacity = "0";
+        scrollIndicator.style.visibility = "hidden";
+      } else {
+        scrollIndicator.style.opacity = "1";
+        scrollIndicator.style.visibility = "visible";
+      }
+    }
+  });
+}
+
+function initQuickTasbih() {
+  quickTasbihBtn.addEventListener("click", function () {
+    quickTasbihModal.classList.add("active");
+  });
+
+  quickCountBtn.addEventListener("click", function () {
+    quickTasbihCount++;
+    quickTasbihCountEl.textContent = quickTasbihCount;
+  });
+
+  quickResetBtn.addEventListener("click", function () {
+    quickTasbihCount = 0;
+    quickTasbihCountEl.textContent = quickTasbihCount;
+  });
 }
 
 function initModals() {
-  themeBtn.addEventListener("click", () => {
-    themeModal.classList.add("active");
-  });
+  themeBtn.addEventListener("click", () => themeModal.classList.add("active"));
+  closeThemeModal.addEventListener("click", () =>
+    themeModal.classList.remove("active")
+  );
 
-  closeThemeModal.addEventListener("click", () => {
-    themeModal.classList.remove("active");
-  });
+  helpBtn.addEventListener("click", () => helpModal.classList.add("active"));
+  closeHelpModal.addEventListener("click", () =>
+    helpModal.classList.remove("active")
+  );
 
-  helpBtn.addEventListener("click", () => {
-    helpModal.classList.add("active");
-  });
-
-  closeHelpModal.addEventListener("click", () => {
-    helpModal.classList.remove("active");
-  });
-
-  settingsBtn.addEventListener("click", () => {
-    settingsModal.classList.add("active");
-  });
-
-  closeSettingsModal.addEventListener("click", () => {
-    settingsModal.classList.remove("active");
-  });
+  settingsBtn.addEventListener("click", () =>
+    settingsModal.classList.add("active")
+  );
+  closeSettingsModal.addEventListener("click", () =>
+    settingsModal.classList.remove("active")
+  );
 
   reminderBtn.addEventListener("click", () => {
     if (!activeCountdownId) {
@@ -800,10 +625,9 @@ function initModals() {
     }
     reminderModal.classList.add("active");
   });
-
-  closeReminderModal.addEventListener("click", () => {
-    reminderModal.classList.remove("active");
-  });
+  closeReminderModal.addEventListener("click", () =>
+    reminderModal.classList.remove("active")
+  );
 
   shareBtn.addEventListener("click", () => {
     if (!activeCountdownId) {
@@ -816,19 +640,16 @@ function initModals() {
     }
     shareModal.classList.add("active");
   });
+  closeShareModal.addEventListener("click", () =>
+    shareModal.classList.remove("active")
+  );
 
-  closeShareModal.addEventListener("click", () => {
-    shareModal.classList.remove("active");
-  });
-
-  closeDeleteModal.addEventListener("click", () => {
-    deleteModal.classList.remove("active");
-  });
-
-  cancelDeleteBtn.addEventListener("click", () => {
-    deleteModal.classList.remove("active");
-  });
-
+  closeDeleteModal.addEventListener("click", () =>
+    deleteModal.classList.remove("active")
+  );
+  cancelDeleteBtn.addEventListener("click", () =>
+    deleteModal.classList.remove("active")
+  );
   confirmDeleteBtn.addEventListener("click", () => {
     if (countdownToDelete) {
       deleteCountdown(countdownToDelete);
@@ -837,25 +658,26 @@ function initModals() {
     }
   });
 
-  closeEditModal.addEventListener("click", () => {
-    editModal.classList.remove("active");
-  });
+  closeEditModal.addEventListener("click", () =>
+    editModal.classList.remove("active")
+  );
 
-  closeReminderNotification.addEventListener("click", () => {
-    reminderNotification.classList.remove("active");
-  });
+  closeReminderNotification.addEventListener("click", () =>
+    reminderNotification.classList.remove("active")
+  );
+  okReminderBtn.addEventListener("click", () =>
+    reminderNotification.classList.remove("active")
+  );
+  closeGoodDeedModal.addEventListener("click", () =>
+    goodDeedModal.classList.remove("active")
+  );
+  okGoodDeedBtn.addEventListener("click", () =>
+    goodDeedModal.classList.remove("active")
+  );
 
-  okReminderBtn.addEventListener("click", () => {
-    reminderNotification.classList.remove("active");
-  });
-
-  closeGoodDeedModal.addEventListener("click", () => {
-    goodDeedModal.classList.remove("active");
-  });
-
-  okGoodDeedBtn.addEventListener("click", () => {
-    goodDeedModal.classList.remove("active");
-  });
+  closeQuickTasbih.addEventListener("click", () =>
+    quickTasbihModal.classList.remove("active")
+  );
 
   document.querySelectorAll(".theme-option").forEach((option) => {
     option.addEventListener("click", () => {
@@ -884,12 +706,8 @@ function initModals() {
     });
   });
 
-  languageSelect.addEventListener("change", (e) => {
-    setLanguage(e.target.value);
-  });
-
+  languageSelect.addEventListener("change", (e) => setLanguage(e.target.value));
   notificationsSwitch.addEventListener("change", () => {});
-
   animationsSwitch.addEventListener("change", () => {
     if (!animationsSwitch.checked) {
       document.body.classList.add("no-animations");
@@ -897,7 +715,6 @@ function initModals() {
       document.body.classList.remove("no-animations");
     }
   });
-
   refreshSwitch.addEventListener("change", () => {});
 }
 
@@ -925,7 +742,7 @@ function updateCountdown() {
 
   const now = new Date();
   const eventDate = new Date(countdown.date);
-  const totalTime = eventDate - new Date(countdown.date.split("-")[0], 0, 1); // Time from start of year
+  const totalTime = eventDate - new Date(countdown.date.split("-")[0], 0, 1);
   const timePassed = now - new Date(countdown.date.split("-")[0], 0, 1);
   const progressPercentage = Math.min(
     100,
@@ -978,7 +795,7 @@ function updateCountdown() {
 
 function setActiveCountdown(id) {
   activeCountdownId = id;
-  saveActiveCountdown(id);
+  localStorage.setItem("activeCountdownId", id);
 
   document.querySelectorAll(".countdown-item").forEach((item) => {
     item.classList.remove("active");
@@ -986,12 +803,10 @@ function setActiveCountdown(id) {
 
   const countdown = countdowns.find((c) => c.id === id);
   if (countdown) {
-    document
-      .querySelector(`.countdown-item[data-id="${id}"]`)
-      .classList.add("active");
+    const item = document.querySelector(`.countdown-item[data-id="${id}"]`);
+    if (item) item.classList.add("active");
     activeTitle.textContent = countdown.title;
     updateStats();
-
     updateCountdown();
   }
 }
@@ -1000,18 +815,15 @@ function editCountdown(id) {
   const countdown = countdowns.find((c) => c.id === id);
   if (countdown) {
     countdownToEdit = countdown;
-
     document.getElementById("edit-title").value = countdown.title;
     document.getElementById("edit-date").value = countdown.date;
     document.getElementById("edit-category").value = countdown.category;
-
     editModal.classList.add("active");
   }
 }
 
 function saveEditedCountdown(e) {
   e.preventDefault();
-
   if (!countdownToEdit) return;
 
   const title = document.getElementById("edit-title").value;
@@ -1025,7 +837,6 @@ function saveEditedCountdown(e) {
   countdownToEdit.category = category;
 
   renderCountdownList();
-
   if (countdownToEdit.id === activeCountdownId) {
     activeTitle.textContent = countdownToEdit.title;
     updateCountdown();
@@ -1041,8 +852,8 @@ function deleteCountdown(id) {
 
   if (activeCountdownId === id) {
     localStorage.removeItem("activeCountdownId");
-
     activeCountdownId = countdowns[0]?.id || null;
+
     if (activeCountdownId) {
       setActiveCountdown(activeCountdownId);
     } else {
@@ -1080,11 +891,8 @@ function addCountdown(e) {
   };
 
   countdowns.unshift(newCountdown);
-
   countdownForm.reset();
-
   renderCountdownList();
-
   setActiveCountdown(newCountdown.id);
   updateStats();
 }
@@ -1135,14 +943,7 @@ function calculateReminderDate(eventDate, daysBefore) {
 }
 
 function shareCountdown(platform) {
-  if (!activeCountdownId) {
-    showReminderNotification(
-      currentLanguage === "ar"
-        ? "الرجاء تحديد عد تنازلي أولاً"
-        : "Please select a countdown first"
-    );
-    return;
-  }
+  if (!activeCountdownId) return;
 
   const countdown = countdowns.find((c) => c.id === activeCountdownId);
   if (!countdown) return;
@@ -1192,7 +993,7 @@ function shareCountdown(platform) {
       window.open(
         `mailto:?subject=${encodeURIComponent(
           (currentLanguage === "ar" ? "العد التنازلي لـ " : "Countdown to ") +
-            encodeURIComponent(countdown.title)
+            countdown.title
         )}&body=${encodeURIComponent(shareText + "\n" + shareUrl)}`,
         "_blank"
       );
@@ -1229,7 +1030,6 @@ function formatDate(dateString) {
 function updateStats() {
   totalCountEl.textContent = countdowns.length;
   activeCountEl.textContent = activeCountdownId ? 1 : 0;
-
   const now = new Date();
   const completed = countdowns.filter((c) => new Date(c.date) < now).length;
   completedCountEl.textContent = completed;
@@ -1251,7 +1051,7 @@ function renderCountdownList() {
                     : "Add your first countdown to get started!"
                 }</p>
             </div>
-          `;
+        `;
     return;
   }
 
@@ -1265,47 +1065,47 @@ function renderCountdownList() {
       const isExpired = eventDate < now;
 
       return `
-              <div class="countdown-item ${isActive ? "active" : ""} ${
+            <div class="countdown-item ${isActive ? "active" : ""} ${
         isExpired ? "expired" : ""
       }" 
-                   data-id="${countdown.id}" 
-                   style="--category-color: ${categoryColor}">
-                  <div class="item-info" onclick="setActiveCountdown('${
-                    countdown.id
-                  }')">
-                      <div class="item-title">
-                          <span>${countdown.title}</span>
-                          <span class="item-category">${
-                            countdown.category.charAt(0).toUpperCase() +
-                            countdown.category.slice(1)
-                          }</span>
-                      </div>
-                      <div class="item-date">
-                          <i class="far fa-calendar"></i>
-                          ${formatDate(countdown.date)}
-                          ${
-                            isExpired
-                              ? `<span class="item-expired">(${
-                                  currentLanguage === "ar" ? "منتهي" : "Expired"
-                                })</span>`
-                              : ""
-                          }
-                      </div>
-                  </div>
-                  <div class="item-actions">
-                      <button class="action-btn edit-btn" onclick="editCountdown('${
-                        countdown.id
-                      }')">
-                          <i class="fas fa-edit"></i>
-                      </button>
-                      <button class="action-btn delete-btn" onclick="showDeleteConfirmation('${
-                        countdown.id
-                      }')">
-                          <i class="fas fa-trash"></i>
-                      </button>
-                  </div>
-              </div>
-            `;
+                data-id="${countdown.id}" 
+                style="--category-color: ${categoryColor}">
+                <div class="item-info" onclick="setActiveCountdown('${
+                  countdown.id
+                }')">
+                    <div class="item-title">
+                        <span>${countdown.title}</span>
+                        <span class="item-category">${
+                          countdown.category.charAt(0).toUpperCase() +
+                          countdown.category.slice(1)
+                        }</span>
+                    </div>
+                    <div class="item-date">
+                        <i class="far fa-calendar"></i>
+                        ${formatDate(countdown.date)}
+                        ${
+                          isExpired
+                            ? `<span class="item-expired">(${
+                                currentLanguage === "ar" ? "منتهي" : "Expired"
+                              })</span>`
+                            : ""
+                        }
+                    </div>
+                </div>
+                <div class="item-actions">
+                    <button class="action-btn edit-btn" onclick="editCountdown('${
+                      countdown.id
+                    }')">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete-btn" onclick="showDeleteConfirmation('${
+                      countdown.id
+                    }')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
     })
     .join("");
 }
@@ -1395,7 +1195,6 @@ function initQuranStreak() {
     }
 
     lastQuranDate = today;
-
     localStorage.setItem("quranStreak", quranStreak);
     localStorage.setItem("lastQuranDate", lastQuranDate);
 
@@ -1439,9 +1238,278 @@ function updateStreakInfo() {
   }
 }
 
+function initIslamicCalendar() {
+  updateIslamicDate();
+  setInterval(updateIslamicDate, 86400000);
+}
+
+function updateIslamicDate() {
+  const today = new Date();
+  const gregorianDate = today.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const baseHijri = { year: 1446, month: 0, day: 1 };
+  const baseGregorian = new Date(2024, 5, 27);
+
+  const diffTime = Math.abs(today - baseGregorian);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  let hijriDays = baseHijri.day + diffDays;
+  let hijriMonth = baseHijri.month;
+  let hijriYear = baseHijri.year;
+
+  while (hijriDays > 29) {
+    hijriDays -= 29;
+    hijriMonth++;
+    if (hijriMonth >= 12) {
+      hijriMonth = 0;
+      hijriYear++;
+    }
+  }
+
+  const hijriDate = `${hijriDays} ${islamicMonths[hijriMonth]} ${hijriYear}`;
+  const monthInfo = `${islamicMonths[hijriMonth]} - ${monthDescriptions[hijriMonth]}`;
+
+  hijriDateEl.textContent = hijriDate;
+  gregorianDateEl.textContent = gregorianDate;
+  islamicMonthEl.textContent = monthInfo;
+
+  const specialDayKey = `${hijriDays}-${hijriMonth + 1}`;
+  if (specialDays[specialDayKey]) {
+    specialDaysEl.innerHTML = `<p>${specialDays[specialDayKey]}</p>`;
+  } else {
+    if (hijriMonth === 8) {
+      specialDaysEl.innerHTML = `<p>Fasting Day ${hijriDays} of 30</p>`;
+    } else {
+      specialDaysEl.innerHTML = "";
+    }
+  }
+}
+
+function initQiblaFinder() {
+  if (window.DeviceOrientationEvent) {
+    deviceOrientationSupported = true;
+    window.addEventListener("deviceorientation", handleDeviceOrientation);
+  } else {
+    qiblaAngleEl.textContent =
+      currentLanguage === "ar"
+        ? "اتجاه القبلة: غير متوفر على هذا الجهاز"
+        : "Qibla Direction: Not available on this device";
+  }
+
+  calibrateQiblaBtn.addEventListener("click", calibrateCompass);
+  qiblaDirection = Math.floor(Math.random() * 360);
+  updateCompassDisplay();
+}
+
+function handleDeviceOrientation(event) {
+  if (!compassCalibrated) return;
+
+  let direction = 0;
+  if (event.webkitCompassHeading) {
+    direction = event.webkitCompassHeading;
+  } else if (event.alpha) {
+    direction = event.alpha;
+  }
+
+  const angleToQibla = (360 - direction + qiblaDirection) % 360;
+  compassNeedle.style.transform = `translateX(-50%) rotate(${angleToQibla}deg)`;
+
+  qiblaAngleEl.textContent =
+    currentLanguage === "ar"
+      ? `اتجاه القبلة: ${Math.round(angleToQibla)}°`
+      : `Qibla Direction: ${Math.round(angleToQibla)}°`;
+}
+
+function calibrateCompass() {
+  compassCalibrated = true;
+
+  if (!deviceOrientationSupported) {
+    const simulatedAngle = Math.floor(Math.random() * 360);
+    compassNeedle.style.transform = `translateX(-50%) rotate(${simulatedAngle}deg)`;
+    qiblaAngleEl.textContent =
+      currentLanguage === "ar"
+        ? `اتجاه القبلة: ${simulatedAngle}° (محاكاة)`
+        : `Qibla Direction: ${simulatedAngle}° (simulated)`;
+  }
+
+  showReminderNotification(
+    currentLanguage === "ar"
+      ? "تم معايرة البوصلة بنجاح!"
+      : "Compass calibrated successfully!"
+  );
+}
+
+function updateCompassDisplay() {
+  if (!compassCalibrated) {
+    compassNeedle.style.transform = `translateX(-50%) rotate(0deg)`;
+    qiblaAngleEl.textContent =
+      currentLanguage === "ar"
+        ? "اتجاه القبلة: يرجى المعايرة"
+        : "Qibla Direction: Please calibrate";
+  }
+}
+
+function initDailyDua() {
+  const savedDuaIndex = localStorage.getItem("currentDuaIndex");
+  if (savedDuaIndex) {
+    currentDuaIndex = parseInt(savedDuaIndex);
+  }
+
+  displayDua(currentDuaIndex);
+
+  prevDuaBtn.addEventListener("click", function () {
+    currentDuaIndex = (currentDuaIndex - 1 + duas.length) % duas.length;
+    displayDua(currentDuaIndex);
+    localStorage.setItem("currentDuaIndex", currentDuaIndex);
+  });
+
+  nextDuaBtn.addEventListener("click", function () {
+    currentDuaIndex = (currentDuaIndex + 1) % duas.length;
+    displayDua(currentDuaIndex);
+    localStorage.setItem("currentDuaIndex", currentDuaIndex);
+  });
+}
+
+function displayDua(index) {
+  const dua = duas[index];
+  duaArabicEl.textContent = dua.arabic;
+  duaTranslationEl.textContent = dua.translation;
+  duaReferenceEl.textContent = dua.reference;
+}
+
+function initZakatCalculator() {
+  zakatFormEl.addEventListener("submit", function (e) {
+    e.preventDefault();
+    calculateZakat();
+  });
+}
+
+function calculateZakat() {
+  const cashAssets =
+    parseFloat(document.getElementById("cash-assets").value) || 0;
+  const goldValue =
+    parseFloat(document.getElementById("gold-value").value) || 0;
+  const silverValue =
+    parseFloat(document.getElementById("silver-value").value) || 0;
+  const businessAssets =
+    parseFloat(document.getElementById("business-assets").value) || 0;
+
+  const totalAssets = cashAssets + goldValue + silverValue + businessAssets;
+  const nisab = 4000;
+
+  if (totalAssets < nisab) {
+    showReminderNotification(
+      currentLanguage === "ar"
+        ? "أصولك لا تصل إلى النصاب. لا زكاة واجبة."
+        : "Your assets do not meet the nisab threshold. No Zakat is due."
+    );
+    zakatResultEl.style.display = "none";
+    return;
+  }
+
+  const zakatAmount = totalAssets * 0.025;
+  zakatAmountEl.textContent = `$${zakatAmount.toFixed(2)}`;
+  zakatResultEl.style.display = "block";
+}
+
+function calculatePrayerTimes() {
+  const today = new Date();
+  const fajr = "05:30";
+  const sunrise = "06:45";
+  const dhuhr = "12:45";
+  const asr = "15:30";
+  const maghrib = "18:30";
+  const isha = "19:45";
+
+  return [
+    { name: "Fajr", time: fajr },
+    { name: "Sunrise", time: sunrise },
+    { name: "Dhuhr", time: dhuhr },
+    { name: "Asr", time: asr },
+    { name: "Maghrib", time: maghrib },
+    { name: "Isha", time: isha },
+  ];
+}
+
+function updatePrayerTimes() {
+  prayerTimes = calculatePrayerTimes();
+  const now = new Date();
+  const currentTime = now.getHours() * 60 + now.getMinutes();
+
+  currentPrayerIndex = -1;
+  nextPrayerIndex = -1;
+
+  for (let i = 0; i < prayerTimes.length; i++) {
+    const [hours, minutes] = prayerTimes[i].time.split(":").map(Number);
+    const prayerTime = hours * 60 + minutes;
+
+    if (prayerTime <= currentTime) {
+      currentPrayerIndex = i;
+    } else if (nextPrayerIndex === -1) {
+      nextPrayerIndex = i;
+    }
+  }
+
+  if (nextPrayerIndex === -1) {
+    nextPrayerIndex = 0;
+  }
+
+  renderPrayerTimes();
+}
+
+function renderPrayerTimes() {
+  prayerTimesGrid.innerHTML = "";
+
+  prayerTimes.forEach((prayer, index) => {
+    const isActive = index === currentPrayerIndex;
+    const prayerCard = document.createElement("div");
+    prayerCard.className = `prayer-time-card ${isActive ? "active" : ""}`;
+
+    const [hours, minutes] = prayer.time.split(":");
+    const formattedTime = `${hours}:${minutes}`;
+
+    let remainingTime = "";
+    if (index === nextPrayerIndex) {
+      const now = new Date();
+      const [nextHours, nextMinutes] = prayer.time.split(":").map(Number);
+      const nextPrayerTime = new Date();
+      nextPrayerTime.setHours(nextHours, nextMinutes, 0, 0);
+
+      if (nextPrayerTime < now) {
+        nextPrayerTime.setDate(nextPrayerTime.getDate() + 1);
+      }
+
+      const diffMs = nextPrayerTime - now;
+      const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
+      const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+      remainingTime =
+        currentLanguage === "ar"
+          ? `بعد ${diffHrs}س ${diffMins}د`
+          : `in ${diffHrs}h ${diffMins}m`;
+    }
+
+    prayerCard.innerHTML = `
+            <div class="prayer-name">${prayer.name}</div>
+            <div class="prayer-time">${formattedTime}</div>
+            ${
+              remainingTime
+                ? `<div class="prayer-remaining">${remainingTime}</div>`
+                : ""
+            }
+        `;
+
+    prayerTimesGrid.appendChild(prayerCard);
+  });
+}
+
 function startGoodDeedReminders() {
   setTimeout(showRandomGoodDeed, 60000);
-
   goodDeedInterval = setInterval(showRandomGoodDeed, 600000);
 }
 
@@ -1470,33 +1538,118 @@ function checkLaylatulQadrReminder() {
   }
 }
 
+function initRippleEffects() {
+  document.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("mousedown", function (e) {
+      if (
+        this.classList.contains("action-btn") ||
+        this.classList.contains("close-btn") ||
+        this.classList.contains("floating-btn") ||
+        this.classList.contains("hamburger-menu") ||
+        this.classList.contains("lang-switcher")
+      )
+        return;
+
+      const ripple = document.createElement("span");
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+
+      ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.7);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                width: ${size}px;
+                height: ${size}px;
+                top: ${y}px;
+                left: ${x}px;
+                pointer-events: none;
+            `;
+
+      this.style.position = "relative";
+      this.style.overflow = "hidden";
+      this.appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+}
+
+function initSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href");
+      if (targetId === "#") return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: "smooth",
+        });
+      }
+    });
+  });
+}
+
+function initPreloader() {
+  window.addEventListener("load", function () {
+    const preloader = document.querySelector(".loading-spinner");
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 1000);
+  });
+}
+
 function init() {
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const sectionId = this.getAttribute("data-section");
+      setActiveSection(sectionId);
+    });
+  });
+
+  getStartedBtn.addEventListener("click", function () {
+    setActiveSection("countdowns");
+  });
+
+  if (window.location.hash) {
+    const sectionId = window.location.hash.substring(1);
+    if (document.getElementById(sectionId)) {
+      setActiveSection(sectionId);
+    }
+  }
+
+  initMobileMenu();
+  initLanguageSwitcher();
+  initExploreFeatures();
+  initScrollTopButton();
+  initQuickTasbih();
   initModals();
-  renderCountdownList();
-  updateStats();
+  initRippleEffects();
+  initSmoothScrolling();
+  initPreloader();
 
   setLanguage(currentLanguage);
 
   initTasbihCounter();
   initQuranStreak();
-  startGoodDeedReminders();
-  checkLaylatulQadrReminder();
-
   initIslamicCalendar();
   initQiblaFinder();
   initDailyDua();
   initZakatCalculator();
 
-  loadIslamicData();
-
+  renderCountdownList();
+  updateStats();
   updatePrayerTimes();
   setInterval(updatePrayerTimes, 60000);
 
-  countdownForm.addEventListener("submit", addCountdown);
-  reminderForm.addEventListener("submit", addReminder);
-  editForm.addEventListener("submit", saveEditedCountdown);
-
-  const savedActiveId = getActiveCountdown();
+  const savedActiveId = localStorage.getItem("activeCountdownId");
   const savedCountdownExists = countdowns.some((c) => c.id === savedActiveId);
 
   if (savedActiveId && savedCountdownExists) {
@@ -1505,11 +1658,22 @@ function init() {
     setActiveCountdown(countdowns[0].id);
   }
 
+  startGoodDeedReminders();
+  checkLaylatulQadrReminder();
+
+  countdownForm.addEventListener("submit", addCountdown);
+  reminderForm.addEventListener("submit", addReminder);
+  editForm.addEventListener("submit", saveEditedCountdown);
+
   document
     .querySelector('.reminder-option[data-days="1"]')
     .classList.add("active");
 
   setInterval(updateCountdown, 1000);
+
+  if (document.getElementById("home").classList.contains("active")) {
+    document.body.style.overflow = "hidden";
+  }
 }
 
 document.addEventListener("DOMContentLoaded", init);
