@@ -73,5 +73,5 @@ Just open the app and click the "Help" button - everything is explained inside!
 
 Made with ❤️ for the Muslim Ummah**
 
-*May this app bring you closer to Allah and help in your spiritual journey.* can you minimize the animations and
+*May this app bring you closer to Allah and help in your spiritual journey.
 
